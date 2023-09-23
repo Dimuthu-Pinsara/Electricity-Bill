@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\BillController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/test', [BillController::class, 'index'])->name('test');
+Route::post('/login', [UserController::class, 'login'])->name('login');

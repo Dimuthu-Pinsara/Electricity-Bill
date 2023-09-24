@@ -13,8 +13,12 @@ class UserController extends Controller
     function login(Request $request){
         $user = DB::table('users')->where('email',$request->email)->first();
         if ( !$user || !Hash::check($request->password,$user->password)){
-            return ["error"=>"error passowrd"];
+            return response()->json([
+                'message'=>'Invalid UserName Or Password'
+            ],500);
         }
-        return $user;
+        return response()->json([
+            'message'=>'Sucessfully logged in'
+        ]);
     }
 }
